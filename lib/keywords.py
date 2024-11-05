@@ -22,3 +22,11 @@ def sel_element_text_by_xpath_should_be(element, expected_text):
 def sel_get_text_by_xpath(element):
     text = driver.find_element(By.XPATH, element).text
     return text
+
+def sel_get_web_elements_by_xpath(element):
+    elements = driver.find_elements(By.XPATH, element)
+    return elements
+
+def sel_click_list_web_elements_by_xpath(list_element):
+    for el in list_element:
+        el.click()

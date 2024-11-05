@@ -38,11 +38,11 @@ TC 4: A/B Testing
     And The text contains one of the variations
     Sel Close Browser
 
-# TC 4: Checkboxes For loop
-#     Given I am on the base page of herokuapp
-#     When I click checkboxes link
-#     And I click all the checkboxes
-#     Close Browser
+TC 4: Checkboxes For loop
+    Given I am on the base page of herokuapp
+    When I click checkboxes link
+    And I click all the checkboxes
+    Sel Close Browser
 
 *** Keywords ***
 Login To Herokuapp
@@ -78,13 +78,14 @@ The text contains one of the variations
     ...    Log To Console   "Contains variation"
 
 
-# I click checkboxes link
-#     Click Element    //a[text()="Checkboxes"]
+I click checkboxes link
+    Sel Click Element By Xpath    //a[text()="Checkboxes"]
 
-# I click all the checkboxes
-#     @{LIST_CHECKBOX}    Get WebElements    //form/input
-#     FOR  ${i}  IN  @{LIST_CHECKBOX}
-#         Log To Console    ${i}
-#         Click Element    ${i}
-#     END
+I click all the checkboxes
+    @{LIST_CHECKBOX}    Sel Get Web Elements By Xpath    //form/input
+    FOR  ${i}  IN  @{LIST_CHECKBOX}
+        Log To Console    ${i}
+    END
+    
+    Sel Click List Web Elements By Xpath    ${LIST_CHECKBOX}
     
