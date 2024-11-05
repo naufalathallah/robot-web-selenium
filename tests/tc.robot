@@ -37,6 +37,12 @@ TC 4: A/B Testing
     And The text contains one of the variations
     Close Browser
 
+TC 4: Checkboxes For loop
+    Given I am on the base page of herokuapp
+    When I click checkboxes link
+    And I click all the checkboxes
+    Close Browser
+
 *** Keywords ***
 Login To Herokuapp
     [Arguments]    ${user}    ${pass}
@@ -69,3 +75,15 @@ The text contains one of the variations
     ${TEXT_DISPLAYED}=    Get Text    //h3
     Run Keyword If    "${TEXT_DISPLAYED}" == "A/B Test Control" or "${TEXT_DISPLAYED}" == "A/B Test Variation 1"
     ...    Log To Console   "Contains variation"
+
+
+I click checkboxes link
+    Click Element    //a[text()="Checkboxes"]
+
+I click all the checkboxes
+    @{LIST_CHECKBOX}    Get WebElements    //form/input
+    FOR  ${i}  IN  @{LIST_CHECKBOX}
+        Log To Console    ${i}
+        Click Element    ${i}
+    END
+    
