@@ -18,8 +18,8 @@ ${BTN_LOGOUT}        //a[@href="/logout"]
 *** Test Cases ***
 TC 1: Login
     Login To Herokuapp    ${UNAME}    ${PASSWORD}
-    # Logout From Herokuapp
-    # Close Browser
+    Logout From Herokuapp
+    Sel Close Browser
 
 # TC 2: Login list
 #     Login To Herokuapp    ${LIST_USERNAME}[0]    ${PASSWORD}
@@ -53,8 +53,8 @@ Login To Herokuapp
     Sel Click Element By Xpath    ${BTN_LOGIN}
     Sel Element Text By Xpath Should Be    //h4    Welcome to the Secure Area. When you are done click logout below.
 
-# Logout From Herokuapp
-#     Click Element    ${BTN_LOGOUT}
+Logout From Herokuapp
+    Sel Click Element By Xpath   ${BTN_LOGOUT}
 
 # I am on the base page of herokuapp
 #     Open Browser    ${BASE_URL}    ${BROWSER}
