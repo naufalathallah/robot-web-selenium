@@ -16,5 +16,9 @@ def sel_click_element_by_xpath(element):
     driver.find_element(By.XPATH, element).click()
 
 def sel_element_text_by_xpath_should_be(element, expected_text):
-    displayed_text =  driver.find_element(By.XPATH, element).text
+    displayed_text =  sel_get_text_by_xpath(element)
     assert displayed_text == expected_text, f"Expected title to be '{expected_text}' but got '{displayed_text}'"
+
+def sel_get_text_by_xpath(element):
+    text = driver.find_element(By.XPATH, element).text
+    return text
