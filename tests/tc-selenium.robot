@@ -1,5 +1,5 @@
 *** Settings ***
-# Library    SeleniumLibrary
+Library    SeleniumLibrary
 Library    ../lib/keywords.py
 
 *** Variables ***
@@ -11,7 +11,7 @@ ${PASSWORD}    SuperSecretPassword!
 &{DICT_USERNAME}    user1=tomsmith    user2=tom    user3=smith    user4=tomsmith1
 
 ${INPUT_USERNAME}    username
-${INPUT_PASSWORD}    id:password
+${INPUT_PASSWORD}    password
 ${BTN_LOGIN}         //button[@type="submit"]
 ${BTN_LOGOUT}        //a[@href="/logout"]
 
@@ -49,9 +49,9 @@ Login To Herokuapp
     [Arguments]    ${user}    ${pass}
     Sel Open Browser    ${BASE_URL}/login
     Sel Input Text By Id   ${INPUT_USERNAME}    ${user}
-#     Input Text    ${INPUT_PASSWORD}    ${pass}
-#     Click Element    ${BTN_LOGIN}
-#     Element Text Should Be    //h4    Welcome to the Secure Area. When you are done click logout below.
+    Sel Input Text By Id    ${INPUT_PASSWORD}    ${pass}
+    Sel Click Element By Xpath    ${BTN_LOGIN}
+    Sel Element Text By Xpath Should Be    //h4    Welcome to the Secure Area. When you are done click logout below.
 
 # Logout From Herokuapp
 #     Click Element    ${BTN_LOGOUT}
