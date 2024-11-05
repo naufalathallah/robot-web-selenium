@@ -6,6 +6,8 @@ ${BASE_URL}    http://the-internet.herokuapp.com
 ${BROWSER}    Chrome
 ${UNAME}    tomsmith
 ${PASSWORD}    SuperSecretPassword!
+@{LIST_USERNAME}    tomsmith    tom    smith    tomsmith1
+&{DICT_USERNAME}    user1=tomsmith    user2=tom    user3=smith    user4=tomsmith1
 
 ${INPUT_USERNAME}    id:username
 ${INPUT_PASSWORD}    id:password
@@ -27,5 +29,15 @@ Logout From Herokuapp
 *** Test Cases ***
 TC 1: Login
     Login To Herokuapp    ${UNAME}    ${PASSWORD}
+    Logout From Herokuapp
+    Close Browser
+
+TC 2: Login list
+    Login To Herokuapp    ${LIST_USERNAME}[0]    ${PASSWORD}
+    Logout From Herokuapp
+    Close Browser
+
+TC 3: Login dict
+    Login To Herokuapp    ${DICT_USERNAME}[user1]    ${PASSWORD}
     Logout From Herokuapp
     Close Browser
