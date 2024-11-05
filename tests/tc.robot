@@ -33,7 +33,8 @@ TC 3: Login dict
 TC 4: A/B Testing
     Given I am on the base page of herokuapp
     When I click a/b testing link
-    Then I can see the text variation
+    Then I can see the text variations
+    And The text contains one of the variations
     Close Browser
 
 *** Keywords ***
@@ -54,7 +55,7 @@ I am on the base page of herokuapp
 I click a/b testing link
     Click Element    //a[text()="A/B Testing"]
 
-I can see the text variation
+I can see the text variations
     ${TEXT_DISPLAYED}=    Get Text    //h3
     Log To Console    ${TEXT_DISPLAYED}
 
@@ -64,3 +65,7 @@ I can see the text variation
         Log To Console    Variation
     END
     
+The text contains one of the variations
+    ${TEXT_DISPLAYED}=    Get Text    //h3
+    Run Keyword If    "${TEXT_DISPLAYED}" == "A/B Test Control" or "${TEXT_DISPLAYED}" == "A/B Test Variation 1"
+    ...    Log To Console   "Contains variation"
